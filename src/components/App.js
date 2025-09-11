@@ -97,20 +97,22 @@ function App() {
     <div id="main">
       
       <select
-        id="state"
-        onChange={(e) => {
-          const state = states[e.target.value];
-          setSelectedState(state);
-          setSelectedCity(state.city[0]); 
-          setSelectedLandmark(state.city[0].landmarks[0]); 
-        }}
-      >
-        {states.map((state, index) => (
-          <option key={index} value={index}>
-            {state.name}
-          </option>
-        ))}
-      </select>
+  id="state"
+  onChange={(e) => {
+    const state = states[e.target.value];
+    setSelectedState(state);
+    setSelectedCity(state.city[0]);
+    setSelectedLandmark(state.city[0].landmarks[0]);
+  }}
+>
+  <option value="">Select state</option>
+  {states.map((state, index) => (
+    <option key={index} value={index}>
+      {state.name}
+    </option>
+  ))}
+</select>
+
 
       
       <select
