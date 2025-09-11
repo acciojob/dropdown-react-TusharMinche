@@ -11,7 +11,7 @@ const states = [
       {
         name: "Indore",
         description:
-          "Indore is a city in west-central India. It’s known for the 7-story Rajwada Palace and the Lal Baag Palace, which date back to Indore’s 19th-century Holkar dynasty.",
+          "Indore is a city in west-central India. It's known for the 7-story Rajwada Palace and the Lal Baag Palace, which date back to Indore's 19th-century Holkar dynasty.",
         landmarks: [
           {
             name: "Mhow",
@@ -86,7 +86,6 @@ const states = [
 ];
 
 function App() {
-  
   const [selectedState, setSelectedState] = useState(states[0]);
   const [selectedCity, setSelectedCity] = useState(states[0].city[0]);
   const [selectedLandmark, setSelectedLandmark] = useState(
@@ -95,34 +94,32 @@ function App() {
 
   return (
     <div id="main">
-      
       <select
-  id="state"
-  onChange={(e) => {
-    const state = states[e.target.value];
-    setSelectedState(state);
-    setSelectedCity(state.city[0]);
-    setSelectedLandmark(state.city[0].landmarks[0]);
-  }}
->
-  <option value="">Select state</option>
-  {states.map((state, index) => (
-    <option key={index} value={index}>
-      {state.name}
-    </option>
-  ))}
-</select>
+        id="state"
+        onChange={(e) => {
+          const state = states[e.target.value];
+          setSelectedState(state);
+          setSelectedCity(state.city[0]);
+          setSelectedLandmark(state.city[0].landmarks[0]);
+        }}
+      >
+        <option value="">Select state</option>
+        {states.map((state, index) => (
+          <option key={index} value={index}>
+            {state.name}
+          </option>
+        ))}
+      </select>
 
-
-      
       <select
         id="city"
         onChange={(e) => {
           const city = selectedState.city[e.target.value];
           setSelectedCity(city);
-          setSelectedLandmark(city.landmarks[0]); 
+          setSelectedLandmark(city.landmarks[0]);
         }}
       >
+        <option value="">Select city</option>
         {selectedState.city.map((city, index) => (
           <option key={index} value={index}>
             {city.name}
@@ -130,13 +127,13 @@ function App() {
         ))}
       </select>
 
-      
       <select
         id="landmark"
         onChange={(e) =>
           setSelectedLandmark(selectedCity.landmarks[e.target.value])
         }
       >
+        <option value="">Select landmark</option>
         {selectedCity.landmarks.map((landmark, index) => (
           <option key={index} value={index}>
             {landmark.name}
@@ -144,7 +141,6 @@ function App() {
         ))}
       </select>
 
-      
       <Card
         state={selectedState}
         city={selectedCity}
